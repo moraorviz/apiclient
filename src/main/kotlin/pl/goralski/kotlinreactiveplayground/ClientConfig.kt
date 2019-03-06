@@ -15,8 +15,8 @@ class ClientConfig {
     }
 
     @Bean
-    fun githubClient(webClient: WebClient): GithubClient {
-        return GithubClient(webClient)
+    fun meetClient(webClient: WebClient): MeetClient {
+        return MeetClient(webClient)
     }
 
 }
