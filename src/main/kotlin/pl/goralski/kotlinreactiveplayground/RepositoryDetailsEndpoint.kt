@@ -12,14 +12,11 @@ class RepositoryDetailsEndpoint(
         private val meetClient: MeetClient,
         private val entityRepository: ReactiveEntityMeetRepository) {
 
-    @GetMapping(value = ["/{startfetching}"])
+    @GetMapping(value = ["/{start_fetching}"])
     fun getRepositoriesByOwner(): Flux<MeetRepository> {
         return meetClient.getRepository().flatMap { it -> entityRepository.save(it) }.log()
     }
 
-
-    companion object {
-        const val OWNER: String = "owner"
-        const val REPOSITORY_NAME: String = "repositoryName"
-    }
+    // TODO implement API endpoint for python-flask to trigger.
+    // TODO implement takeWhile reactor method for discarding undesired data (ouside day-date boundaries)
 }
