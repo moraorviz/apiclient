@@ -11,4 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 // https://stackoverflow.com/questions/18129291/mongodb-and-spel-expressions-in-document-annotations
 @Document
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class MeetRepository(@Id @JsonProperty("rsvp_id") val rsvpId: String = "", val group: Group = Group("", "", ""))
+data class MeetRepository(@JsonProperty("rsvp_id") val rsvpId: String = "",
+                            @JsonProperty("guests") val guests: String = "",
+                            @JsonProperty("mtime") val mTime: String = "",
+                            val group: Group = Group("", "", ""))
