@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class MeetRepository(@JsonProperty("rsvp_id") val rsvpId: String = "",
+                            @JsonProperty("response") val response: String = "",
                             @JsonProperty("guests") val guests: String = "",
                             @JsonProperty("mtime") val mTime: String = "",
                             val group: Group = Group("", "", ""))
