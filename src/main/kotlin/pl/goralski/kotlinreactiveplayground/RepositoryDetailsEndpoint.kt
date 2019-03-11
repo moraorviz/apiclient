@@ -22,11 +22,6 @@ class RepositoryDetailsEndpoint(
     @GetMapping(value = ["/{date}"])
     fun getStartSince(
             @PathVariable("date") date: String): Flux<MeetRepository> {
-        println(date)
-        val dateInt = date.toBigInteger()
-        val threshold: BigInteger = dateInt + 86400000.toBigInteger()
-        return meetClient.getDataSince(date).takeWhile { it.mTime.toBigInteger().compareTo(threshold) < 1}.log()
-                .flatMap { it -> entityRepository.save(it) }
-
+        return meetClient.getDataSince(date).flatMap { it -> entityRepository.save(it) }.log()
     }
 }
