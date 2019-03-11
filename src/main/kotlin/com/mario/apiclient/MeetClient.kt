@@ -1,4 +1,4 @@
-package pl.goralski.kotlinreactiveplayground
+package com.mario.apiclient
 
 import org.springframework.http.MediaType.APPLICATION_JSON
 import org.springframework.web.reactive.function.client.WebClient

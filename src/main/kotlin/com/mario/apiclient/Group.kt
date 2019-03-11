@@ -1,4 +1,4 @@
-package pl.goralski.kotlinreactiveplayground
+package com.mario.apiclient
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty

@@ -1,4 +1,4 @@
-package pl.goralski.kotlinreactiveplayground
+package com.mario.apiclient
 
 import org.junit.Test
 import org.junit.runner.RunWith
