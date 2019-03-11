@@ -1,6 +1,6 @@
-## Kotlin & Spring Reactive Playground
+## Kotlin & Spring Reactive APIClient
 
-Just quick example app. Nothing special here. 
+Cliente del long polling stream que nos sirve la API de meet.com
 
 - Kotlin
 - Spring WebFlux & WebClient
@@ -10,17 +10,20 @@ Just quick example app. Nothing special here.
 ```docker
 docker run -d -p 27017:27017 --name mongodb -d mongo
 ```
+Es necesario tener un contenedor de mongo levantado en local
+para que spring lo descubra en el arranque y poder persistir
 
-Requests:
-1. will fetch repository from github and save to mongodb
-2. will fetch all github repositories by user and save them to mongodb
-3. will fetch saved repositories from mongodb
+Función:
+1. Emplea operadores de reactor para modificar el stream de datos
+2. Se usa el objeto flux para almacenar el stream en tiempo real
+y flatmap para persistirlo según el modelo de objetos que hemos creado
+para la reunión con los campos importantes y anotaciones de Spring
+3. Para el segundo caso de uso se intenta combinar FlatMap con 
+takeWhile 
 
-```bash
-curl -v http://localhost:8080/repositories/kgoralski/go-crud-template
-curl -v http://localhost:8080/repositories/kgoralski
-curl -v http://localhost:8080/repositories/
+Éste microservicio es encargado de realizar operaciones en bbdd (crear)
+y es consumido por el servidor de python.
 
-```
 
-PS. MongoDb used because it was easier to start playing with it.
+Necesita Java 8 de oracle y la última versión de gradle para funcionar.
+Se arranca con el comando $ gradle bootRun o desde el IDE
